@@ -52,15 +52,17 @@ public class SolverApp {
         // solver.run();
 
         final int solverCount = 8;
+        final int numPerGeneration = 1000;
         SudokuSolver[] solvers = new SudokuSolver[solverCount];
         Thread[] solverThreads = new Thread[solverCount];
 
         for (int i = 0; i < solverCount; i++){
-            solvers[i] = new SudokuSolver(startBoard, 1000);
+            solvers[i] = new SudokuSolver(startBoard, numPerGeneration);
             solverThreads[i] = new Thread(solvers[i]);
             solverThreads[i].start();
         }
 
+        long startTime = System.currentTimeMillis();
 
         boolean solutionFound = false;
 
@@ -88,6 +90,13 @@ public class SolverApp {
                 System.out.println(e.getMessage());
             }
         }
+
+        long finishTime = System.currentTimeMillis();
+
+        long timeTaken = finishTime - startTime;
+
+        System.out.println("finished in " + timeTaken / 1000 + " seconds");
+        System.out.println("using " + solverCount + " threads and " + numPerGeneration + " boards per generation");
 
     }
 
