@@ -187,6 +187,7 @@ public class SudokuSolver implements Runnable {
             //check if any of the new boards are solving the puzzle
             for (Board b : boardSpace){
                 if (isBoardComplete(b)){
+                    System.out.println("SOLUTION FOUND");
                     System.out.println(b);
                     return;
                 }
@@ -374,18 +375,18 @@ public class SudokuSolver implements Runnable {
             int evolNum = rand.nextInt(7);
             switch(evolNum){
                 case 0:
-                    returnBoards[i] = MutateBoardRows(returnBoards[i]);
+                    returnBoards[i] = MutateBoardRows(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
                 case 1:
-                    returnBoards[i] = MutateBoardCols(returnBoards[i]);
+                    returnBoards[i] = MutateBoardCols(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
                 case 3: case 4:
                     //swaps on rows seem to be the best of the mutations so we will make
                     //them more common
-                    returnBoards[i] = mutateSwapsInRow(returnBoards[i]);
+                    returnBoards[i] = mutateSwapsInRow(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
                 case 5:
-                    returnBoards[i] = mutateSwapsInCol(returnBoards[i]);
+                    returnBoards[i] = mutateSwapsInCol(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
                 default:
                     //dont mutate

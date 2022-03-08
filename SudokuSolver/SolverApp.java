@@ -61,15 +61,31 @@ public class SolverApp {
             solverThreads[i].start();
         }
 
-        for (int i = 0; i < solverCount; i++){
-            if(!solverThreads[i].isAlive()){
-                //thread finished and answer found
-                for (int j = 0; j < solverCount; j++){
-                    if(j!=i){
-                        solverThreads[j].interrupt();
+
+        boolean solutionFound = false;
+
+        while (true){
+            for (int i = 0; i < solverCount; i++){
+                if(!solverThreads[i].isAlive()){
+                    //thread finished and answer found
+                    for (int j = 0; j < solverCount; j++){
+                        if(j!=i){
+                            solverThreads[j].interrupt();
+                        }
                     }
+                    solutionFound = true;
+                    break;
                 }
+            }
+
+            if (solutionFound){
                 break;
+            }
+
+            try{
+                Thread.sleep(2000);
+            } catch(Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
