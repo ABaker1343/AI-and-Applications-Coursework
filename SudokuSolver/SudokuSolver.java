@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class SudokuSolver implements Runnable {
 
+    // class representing a Sudoku board
     static class Board {
         int[][] values;
         ArrayList<int[]> lockedPositions;
@@ -21,6 +22,9 @@ public class SudokuSolver implements Runnable {
 
         }
 
+        /**
+         * initializes random values to the sudoku board where each row will have one of each number
+         */
         public void  initRandomValues(){
 
             Random rand = new Random();
@@ -43,6 +47,9 @@ public class SudokuSolver implements Runnable {
             }
         }
 
+        /**
+         * initializes values for the sudoku board that dont have any hueristic
+         */
         public void initTrueRandomValues(){
             Random rand = new Random();
 
@@ -96,6 +103,11 @@ public class SudokuSolver implements Runnable {
     int numBoards;
     static volatile int maxEval;
 
+    /**
+     * constructor for SudokuSolver class
+     * @param initialBoard
+     * @param noBoards
+     */
     SudokuSolver(int[][] initialBoard, int noBoards){
 
         //set initial values that will be used in solving the puzzle
@@ -130,6 +142,10 @@ public class SudokuSolver implements Runnable {
 
     }
 
+
+    /**
+     * runs the solver so that you come out with a result
+     */
     public void run(){
 
         //create the array of boards that will contain the best of each generation
@@ -153,7 +169,7 @@ public class SudokuSolver implements Runnable {
                 }
                 //replace the best boards with this board if its better
                 for (int i = 0; i < boardsToEvolve.length; i++){
-                    if (val > evaluate(boardsToEvolve[i])){
+                    if (val >= evaluate(boardsToEvolve[i])){
                         int index = getLowestEvalIndex(boardsToEvolve);
                         boardsToEvolve[index] = b;
                         break;
@@ -380,6 +396,13 @@ public class SudokuSolver implements Runnable {
         return returnBoards;
     }
 
+    /**
+     * slices a board vertically so that half comes from one parent board and the other half comes
+     * from the other parent board
+     * @param b1
+     * @param b2
+     * @return
+     */
     private Board[] getVerticalSlices(Board b1, Board b2){
         
         Board[] returnBoards = new Board[2];
@@ -404,6 +427,15 @@ public class SudokuSolver implements Runnable {
 
     }
 
+
+    /**
+     * creates a new board based on two parents
+     * splits the board in half horizontally so that half the board comes from one parent
+     * and the other half comes from the other parent
+     * @param b1
+     * @param b2
+     * @return
+     */
     private Board[] getHorizontalSlices(Board b1, Board b2){
                 Board[] returnBoards = new Board[2];
         for (int i = 0; i < returnBoards.length; i++){
@@ -426,6 +458,9 @@ public class SudokuSolver implements Runnable {
         return returnBoards;
     }
 
+    /**
+     * crossover function that randomly takes rows from either the first or second parent board
+     */
     private Board ShuffleLinesX(Board b1, Board b2){
         Board returnBoard = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -442,6 +477,12 @@ public class SudokuSolver implements Runnable {
         return returnBoard;
     }
 
+    /**
+     * crossover function that takes columns randomly from either the first or second parent board
+     * @param b1
+     * @param b2
+     * @return
+     */
     private Board ShuffleLinesY(Board b1, Board b2){
         Board returnBoard = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -457,6 +498,12 @@ public class SudokuSolver implements Runnable {
         return returnBoard;
     }
 
+    /**
+     * mutation funtion that shifts all the numbers except the starting ones along by random amounts
+     * per row
+     * @param b
+     * @return
+     */
     private Board MutateBoardRows(Board b){
         Board mutation = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -507,6 +554,12 @@ public class SudokuSolver implements Runnable {
         return mutation;
     }
 
+     /**
+     * mutation funtion that shifts all the numbers except the starting ones along by random amounts
+     * per row
+     * @param b
+     * @return
+     */
     private Board MutateBoardCols(Board b){
         Board mutation = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -556,7 +609,10 @@ public class SudokuSolver implements Runnable {
 
         return mutation;
     }
-
+    
+    /**
+     * mutation function that swaps a random number from a random row with another number from that row
+     */
     private Board mutateSwapsInRow(Board b){
         Board mutation = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -587,6 +643,11 @@ public class SudokuSolver implements Runnable {
         return mutation;
     }
 
+        
+    /**
+     * mutation function that swaps a random number from a random column with another number from that
+     * column
+     */
     private Board mutateSwapsInCol(Board b){
         Board mutation = new Board(9, lockedPositions);
         Random rand = new Random();
@@ -616,6 +677,11 @@ public class SudokuSolver implements Runnable {
         return mutation;
     }
 
+    /**
+     * function that returns the index of the lowest evaluated board in an array of boards
+     * @param boards
+     * @return
+     */
     private int getLowestEvalIndex(Board[] boards){
         int lowestEval = 100000;
         int index = 0;
@@ -628,6 +694,11 @@ public class SudokuSolver implements Runnable {
         return index;
     }
 
+    /**
+     * function that returns the index of the highest evaluated board in an array of boards
+     * @param boards
+     * @return
+     */
     private int getHighestEvalIndex(Board[] boards){
         int highestEval = -1;
         int index = 0;
@@ -640,6 +711,11 @@ public class SudokuSolver implements Runnable {
         return index;
     }
 
+    /**
+     * function that checks if a board is complete this means solved
+     * @param board
+     * @return
+     */
     private boolean isBoardComplete(Board board){
         if (evaluate(board) == 27){
             return true;
