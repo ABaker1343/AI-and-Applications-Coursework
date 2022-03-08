@@ -154,7 +154,7 @@ public class SudokuSolver implements Runnable {
             boardsToEvolve[i] = boardSpace[i];
         }
 
-        System.out.println("starting algorithm\n");
+        System.out.println("starting algorithm on thread: " + Thread.currentThread() + "\n");
         Board bestBoard = null;
         boolean improved = false;
         while (true){
