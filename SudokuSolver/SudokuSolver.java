@@ -102,13 +102,15 @@ public class SudokuSolver implements Runnable {
     Board[] boardSpace;
     int numBoards;
     static volatile int maxEval;
+    int localMaxEval; //this will be a max for this instance
+    float evolutionPercentage; //what amount will be taken to evolve
 
     /**
      * constructor for SudokuSolver class
      * @param initialBoard
      * @param noBoards
      */
-    SudokuSolver(int[][] initialBoard, int noBoards){
+    SudokuSolver(int[][] initialBoard, int noBoards, float evolutionPercentage){
 
         //set initial values that will be used in solving the puzzle
 
@@ -128,6 +130,7 @@ public class SudokuSolver implements Runnable {
 
         //create the initial board, this is just the start state of the board
         this.initialBoard = new Board(initialBoard, lockedPositions);
+        this.evolutionPercentage = evolutionPercentage;
 
         //create the initial batch of boards that will start the evolutions
         boardSpace = new Board[numBoards];
@@ -149,7 +152,7 @@ public class SudokuSolver implements Runnable {
     public void run(){
 
         //create the array of boards that will contain the best of each generation
-        Board[] boardsToEvolve = new Board[numBoards / 10];
+        Board[] boardsToEvolve = new Board[(int)(numBoards * evolutionPercentage)];
         for (int i = 0; i < boardsToEvolve.length; i++){
             boardsToEvolve[i] = boardSpace[i];
         }
@@ -161,11 +164,14 @@ public class SudokuSolver implements Runnable {
             improved = false;
             for (Board b : boardSpace){
                 int val = evaluate(b);
-                if (val > maxEval){
+                if (val > localMaxEval){
                     //logic for printing the best board weve had
-                    maxEval = val;
-                    bestBoard = b.clone();
-                    improved = true;
+                    localMaxEval = val;
+                    if (val > maxEval){
+                        maxEval = val;
+                        bestBoard = b.clone();
+                        improved = true;
+                    }
                 }
                 //replace the best boards with this board if its better
                 for (int i = 0; i < boardsToEvolve.length; i++){
@@ -328,7 +334,7 @@ public class SudokuSolver implements Runnable {
 
         Random rand = new Random();
 
-        Board[] returnBoards = new Board[boardSpace.length * 10];
+        Board[] returnBoards = new Board[(int)(boardSpace.length / this.evolutionPercentage)];
 
         // make the first section the same as the best boards
         for (int i = 0; i < boardSpace.length; i++){
@@ -372,12 +378,20 @@ public class SudokuSolver implements Runnable {
         //mutate the new boards
 
         for (int i = boardSpace.length; i < returnBoards.length; i++){
-            int evolNum = rand.nextInt(7);
+            
+            int evolNum;
+
+            if (localMaxEval == 25) evolNum = rand.nextInt(3) + 3; //when it reaches 25 right only do swaps
+            else evolNum = rand.nextInt(6); //if its not at 25 then shift aswell
+
             switch(evolNum){
                 case 0:
-                    returnBoards[i] = MutateBoardRows(returnBoards[rand.nextInt(returnBoards.length)]);
+                    //dont evolve
                     break;
                 case 1:
+                    returnBoards[i] = MutateBoardRows(returnBoards[rand.nextInt(returnBoards.length)]);
+                    break;
+                case 2:
                     returnBoards[i] = MutateBoardCols(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
                 case 3: case 4:
@@ -388,6 +402,8 @@ public class SudokuSolver implements Runnable {
                 case 5:
                     returnBoards[i] = mutateSwapsInCol(returnBoards[rand.nextInt(returnBoards.length)]);
                     break;
+                // case 6:
+                //     returnBoards[i] = mutateSwap2Random(returnBoards[rand.nextInt(returnBoards.length)]);
                 default:
                     //dont mutate
                     break;
@@ -679,12 +695,50 @@ public class SudokuSolver implements Runnable {
     }
 
     /**
+     * mutation function that will swap 2 random points on the board 
+     * @param b
+     * @return
+     */
+    private Board mutateSwap2Random(Board b){
+        Board mutation = new Board(9, lockedPositions);
+        Random rand = new Random();
+        mutation = b;
+
+        for (int i = 0; i < rand.nextInt(9); i++){
+
+            int c = rand.nextInt(9);
+            //make a swap
+            boolean swapValid = false;
+            int firstIndexR = 0;
+            int secondIndexR = 0;
+            int firstIndexC = 0;
+            int secondIndexC = 0;
+            while (!swapValid){
+                firstIndexR = rand.nextInt(9);
+                secondIndexR = rand.nextInt(9);
+                firstIndexC = rand.nextInt(9);
+                secondIndexC = rand.nextInt(9);
+                if (! (lockedPositions.contains(new int[]{firstIndexR, firstIndexC}) 
+                || lockedPositions.contains(new int[]{secondIndexR, secondIndexC}))){
+                    swapValid = true;
+                }
+
+            }
+            int toSwap = mutation.values[firstIndexR][firstIndexC];
+            mutation.values[firstIndexR][firstIndexC] = mutation.values[secondIndexR][secondIndexC];
+            mutation.values[secondIndexR][secondIndexC] = toSwap;
+        }
+
+        return mutation;
+    }
+
+    /**
      * function that returns the index of the lowest evaluated board in an array of boards
      * @param boards
      * @return
      */
     private int getLowestEvalIndex(Board[] boards){
-        int lowestEval = 100000;
+        int lowestEval = Integer.MAX_VALUE;
         int index = 0;
         for (int i = 0; i < boards.length; i++){
             if (evaluate(boards[i]) < lowestEval){

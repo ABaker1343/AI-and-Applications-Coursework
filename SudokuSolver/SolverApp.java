@@ -53,11 +53,12 @@ public class SolverApp {
 
         final int solverCount = 8;
         final int numPerGeneration = 1000;
+        final float evolutionPercentage = 0.01f;
         SudokuSolver[] solvers = new SudokuSolver[solverCount];
         Thread[] solverThreads = new Thread[solverCount];
 
         for (int i = 0; i < solverCount; i++){
-            solvers[i] = new SudokuSolver(startBoard, numPerGeneration);
+            solvers[i] = new SudokuSolver(startBoard, numPerGeneration, evolutionPercentage);
             solverThreads[i] = new Thread(solvers[i]);
             solverThreads[i].start();
         }
