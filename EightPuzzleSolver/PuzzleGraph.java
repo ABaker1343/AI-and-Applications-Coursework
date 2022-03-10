@@ -99,14 +99,15 @@ class PuzzleGraph {
         //for each possible swap with 0 choose the best one
         
         for (int outer = 0; outer < searchSpace.size(); outer++){
+            Node n = searchSpace.get(outer);
             //swap check all swaps with 0
             //for(int inner = 0; inner < goalNode.value.length; inner++){
-            for (int swapIndex : getValidSwaps(searchSpace.get(outer).zeroIndex)) {
+            for (int swapIndex : getValidSwaps(n.zeroIndex)) {
                 //get the value of swapping that index with 0
                 Node newNode;
-                if (!nodeSearched((newNode = swapWithZero(searchSpace.get(outer), swapIndex)))){
+                if (!nodeSearched((newNode = swapWithZero(n, swapIndex)))){
                     //make sure that node hasnt already been searched
-                    if ( ( moveValue = evaluate( newNode )) < bestMoveValue){
+                    if ( ( moveValue = evaluate( newNode ) + getTraceLength(n)) < bestMoveValue){
                         bestMoveIndex = swapIndex;
                         bestNodeMove = outer;
                         bestMoveValue = moveValue;
@@ -156,6 +157,8 @@ class PuzzleGraph {
         //swap the 0 with the index and return node
         tempNode.value[tempNode.zeroIndex] = tempNode.value[index];
         tempNode.value[index] = 0;
+
+        tempNode.zeroIndex = getZeroIndex(tempNode);
 
         return tempNode;
 
@@ -256,9 +259,11 @@ class PuzzleGraph {
     }
 
     public static void printNodeTrace(Node node){
+        int depth = -1;
         Node currNode = node;
         while (true){
             System.out.println(currNode);
+            depth++;
             if (currNode.prev != null){
                 currNode = currNode.prev;
             }
@@ -266,6 +271,19 @@ class PuzzleGraph {
                 break;
             }
         }
+        System.out.println("depth " + depth);
+    }
+
+    private int getTraceLength(Node n){
+        Node currentNode = n;
+        int total = 0;
+        while(true){
+            total ++;
+            if (currentNode.prev != null){
+                currentNode = currentNode.prev;
+            } else break;
+        }
+        return total;
     }
 
 }
