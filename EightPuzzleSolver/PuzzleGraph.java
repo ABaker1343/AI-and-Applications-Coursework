@@ -101,12 +101,12 @@ class PuzzleGraph {
         for (int outer = 0; outer < searchSpace.size(); outer++){
             Node n = searchSpace.get(outer);
             //swap check all swaps with 0
-            //for(int inner = 0; inner < goalNode.value.length; inner++){
             for (int swapIndex : getValidSwaps(n.zeroIndex)) {
                 //get the value of swapping that index with 0
                 Node newNode;
                 if (!nodeSearched((newNode = swapWithZero(n, swapIndex)))){
                     //make sure that node hasnt already been searched
+                    //evaluation + trace length because we want to favour nodes with less depth
                     if ( ( moveValue = evaluate( newNode ) + getTraceLength(n)) < bestMoveValue){
                         bestMoveIndex = swapIndex;
                         bestNodeMove = outer;
@@ -131,12 +131,6 @@ class PuzzleGraph {
     }
 
     protected boolean nodeSearched(Node node){
-
-        // for (Node n : searchSpace){
-        //     if(Arrays.equals(n.value, node.value)) {
-        //         return true;
-        //     }
-        // }
 
         if (searchSpace.contains(node)){
             return true;
@@ -207,6 +201,8 @@ class PuzzleGraph {
 
     protected int[] getValidSwaps(int zeroIndex) throws Exception{
 
+        // all the valid moves for a given gap
+
         int[] validSwaps = null;
 
         switch (zeroIndex){
@@ -244,6 +240,12 @@ class PuzzleGraph {
         return validSwaps;
     }
 
+    /**
+     * function to get the index of the gap in the board
+     * @param node
+     * @return
+     * @throws Exception
+     */
     int getZeroIndex(Node node) throws Exception {
         int zeroIndex = -1;
         for (int i = 0; i < node.value.length; i++){
@@ -258,6 +260,10 @@ class PuzzleGraph {
         return zeroIndex;
     }
 
+    /**
+     * function to print the trace of a board to stdout
+     * @param node
+     */
     public static void printNodeTrace(Node node){
         int depth = -1;
         Node currNode = node;
@@ -274,6 +280,12 @@ class PuzzleGraph {
         System.out.println("depth " + depth);
     }
 
+    /**
+     * function to get the depth of a node
+     * this is used because we want to favour nodes with lower depths
+     * @param n
+     * @return
+     */
     private int getTraceLength(Node n){
         Node currentNode = n;
         int total = 0;
