@@ -21,6 +21,8 @@ the PuzzleGraph class has two subclasses (one for each heuristic function) which
 this algorithm can solve any configuration of configurations, provided there is a solution.
 this is because at a worst case it will check through all the possible paths to get to an answer
 
+note: in the case provided by the coursework pdf the algorithm took just under 300 seconds to terminate on my personal machine.
+
 # Question 2
 
 ## Question 2.1 p1
