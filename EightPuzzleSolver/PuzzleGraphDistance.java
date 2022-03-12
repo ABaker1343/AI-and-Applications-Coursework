@@ -12,10 +12,15 @@ public class PuzzleGraphDistance extends PuzzleGraph {
         int totalDistance = 0;
 
         for (int i = 0; i < goalNode.value.length; i++){
-            totalDistance += getDistanceFromFinalLocation(node.value[i], i);
+            if (node.value[i] != 0) {
+                totalDistance += getDistanceFromFinalLocation(node.value[i], i);
+            }
         }
 
         return totalDistance;
+
+
+
     }
     /**
      * return the amount of moves to slide a tile to its target location

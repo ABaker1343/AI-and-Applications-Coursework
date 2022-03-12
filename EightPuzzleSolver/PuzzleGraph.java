@@ -65,12 +65,15 @@ class PuzzleGraph {
      */
     public Node run() throws Exception{
 
+        int numNodes = 0;
         Node next = initialNode;
         while (!Arrays.equals(next.value, goalNode.value)){
             next = getNextMove();
             searchSpace.add(next);
+            numNodes++;
         }
         //once we are he we should be at the goal state
+        System.out.println("solution found with " + numNodes + " nodes");
 
         return searchSpace.get(searchSpace.size() - 1);
 
@@ -105,9 +108,10 @@ class PuzzleGraph {
                 //get the value of swapping that index with 0
                 Node newNode;
                 if (!nodeSearched((newNode = swapWithZero(n, swapIndex)))){
+                //if (!checkNodeTrace(n, newNode = swapWithZero(n, swapIndex))){
                     //make sure that node hasnt already been searched
                     //evaluation + trace length because we want to favour nodes with less depth
-                    if ( ( moveValue = evaluate( newNode ) + getTraceLength(n)) < bestMoveValue){
+                    if ( ( moveValue = evaluate( newNode ) + getNodeDepth(n)) < bestMoveValue){
                         bestMoveIndex = swapIndex;
                         bestNodeMove = outer;
                         bestMoveValue = moveValue;
@@ -286,7 +290,7 @@ class PuzzleGraph {
      * @param n
      * @return
      */
-    private int getTraceLength(Node n){
+    private int getNodeDepth(Node n){
         Node currentNode = n;
         int total = 0;
         while(true){
@@ -296,6 +300,33 @@ class PuzzleGraph {
             } else break;
         }
         return total;
+    }
+
+    private boolean checkNodeTrace(Node traceNode, Node newNode){
+        
+        Node currentNode = traceNode;
+
+        while(true){
+            if (newNode.equals(currentNode)) return true;
+
+            if (currentNode.prev != null){
+                currentNode = currentNode.prev;
+            } else return false;
+        }
+    }
+
+    private int getTotalTraceDistance(Node n){
+
+        Node currentNode = n;
+        int total = 0;
+
+        while(true){
+            total += evaluate(currentNode);
+            if(currentNode.prev != null){
+                currentNode = currentNode.prev;
+            } else return total;
+        }
+
     }
 
 }
