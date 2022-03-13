@@ -19,6 +19,7 @@ public class PuzzleGraphOutOfPlace extends PuzzleGraph {
         
         //go over the node and if an item is in the right place decrement wrongNodes
         for (int i = 0; i < goalNode.value.length; i++){
+            if (goalNode.value[i] == 0) {continue;}
             if ( ! (node.value[i] == goalNode.value[i]) ) wrongItems++;
         }
 
