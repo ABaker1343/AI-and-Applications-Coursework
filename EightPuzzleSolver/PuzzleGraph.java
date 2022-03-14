@@ -96,8 +96,8 @@ class PuzzleGraph {
         
         int bestMoveIndex = -1;
         int bestNodeMove = -1;
-        int bestMoveValue = Integer.MAX_VALUE; //as close to infinity as we can get
-        int moveValue = 1;
+        double bestMoveValue = Integer.MAX_VALUE; //as close to infinity as we can get
+        double moveValue = 1;
 
         //for each possible swap with 0 choose the best one
         
@@ -162,7 +162,7 @@ class PuzzleGraph {
 
     }
 
-    protected int evaluate(Node node){
+    protected double evaluate(Node node){
         return 1;
     }
 

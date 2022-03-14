@@ -1,14 +1,14 @@
 package EightPuzzleSolver;
 
-public class PuzzleGraphDistance extends PuzzleGraph {
+public class PuzzleGraphManhattan extends PuzzleGraph {
 
 
-    PuzzleGraphDistance(int[] initialNode, int[] goalNode) throws Exception {
+    PuzzleGraphManhattan(int[] initialNode, int[] goalNode) throws Exception {
         super(initialNode, goalNode);
     }
 
     @Override
-    protected int evaluate(Node node){
+    protected double evaluate(Node node){
         int totalDistance = 0;
 
         for (int i = 0; i < goalNode.value.length; i++){

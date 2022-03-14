@@ -8,20 +8,20 @@ you can do this using graph searching algorightms and you can record the steps t
 1. A* is an algorith that is given a start state and then using some heuristic function it will open the search space to include the best node that is within one step of the nodes that are currently in the search space.
 it will keep doing this until it finds the desired node, when choosing a node to jump to A* will take into account the cost of reaching the node aswell as the cost of reaching the desired state from the new node
 
-2. one addmissable heuristic function that you could use is the amount of tiles that are in the wrong place. This is addmissable because it will never have less moves to take than the amount of wrong tiles, this means that the cost of reaching the desired node will always be equal to or more than the calulated cost.\
-another addmissable heuristic function that could be used is how many tiles away from its final position each tile is. this is addmissable because you will never have to move a tile less spaces than the amount of tiles between it and its final space to get it to the final space.\
+2. one addmissable heuristic function that you could use is the total euclidean distance for each tile from its desired location, this is addmissable because you know that it will always take an amount of moves that is more than or equal to the euclidean distance to get the tile to the locaion because you cannot move tiles diagnoally.\
+another addmissable heuristic function that could be used is the total manhattan distance from each tile to its desired location. this is addmissable because you will never have to move a tile less spaces than the amount of tiles between it and its final space to get it to the final space. also it doesnt account for other tiles being moved in the way in the moves between this board and the goal state\
 
 3. (see EightPuzzleSolver.java).\ in the code i represented each node as an array of integers where 0 would represent the blank space, i would then swap one of the numbers in the array with the 0 to represent a move, i have a function to make sure that all the swaps that were made are legal in the puzzle.\
 the PuzzleGraph class has two subclasses (one for each heuristic function) which will be instantiated based on which function the user chooses
 
-4. the two heuristic functions did perform differently, the function that would take the total amount of tiles that were out of place performed worse than the function that would return the total distance of tiles from their destination. I think this is because the first function does not take into account how close each tile is, this means that a state in which all the tiles are only 1 space out of place out be evaluated the same as a state in which all the tiles are 2 out of place, dispite the fact that the second scenario is clearly worse than the first, this same thing would not happen with the second function
+4. the two heuristic functions did perform differently, the function that would calculate the euclidean distance of tiles that were out of place performed worse than the function that would return the manhattan distance. I think this is because the euclidean distance will be less accurate to the actual amount of moves so it will evaluate nodes as equal even though one may be worse for example if a tile is directly under its desired space it will evaluate as 1 move for that tile, however it would also be evaluated as 1 if it was diagonal to its desired location even though it would have to be at least 2 moves, this leads to more sub-optimal nodes being expanded and therefore more time searching on these nodes
 
 ## Question 1.3
 (see EightPuzzleSolver) the main method is in EightPuzzleSolver.java
 this algorithm can solve any configuration of configurations, provided there is a solution.
 this is because at a worst case it will check through all the possible paths to get to an answer
 
-note: in the case provided by the coursework pdf the algorithm took just under 300 seconds to terminate on my personal machine.
+note: to solve the problem given in the spec my machine took just under 300 seconds using manhattan distance and just over 900 seconds for the euclidean distance
 
 # Question 2
 

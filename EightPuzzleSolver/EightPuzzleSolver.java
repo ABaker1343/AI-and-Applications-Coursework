@@ -22,10 +22,10 @@ class EightPuzzleSolver {
 
             switch(algoChoice){
                 case 1:
-                    pg = new PuzzleGraphOutOfPlace(startState, goalState);
+                    pg = new PuzzleGraphEuclidean(startState, goalState);
                     break;
                 case 2:
-                    pg = new PuzzleGraphDistance(startState, goalState);
+                    pg = new PuzzleGraphManhattan(startState, goalState);
                     break;
                 default:
                     System.out.println("invalid choice of algorith, please enter 1/2");
@@ -51,8 +51,8 @@ class EightPuzzleSolver {
     public static int getUserChoice(Scanner sc){
 
         System.out.println("what evaluation function would you like to use?");
-        System.out.println("1 - number of wrong tiles in the board");
-        System.out.println("2 - total moves to get each tile to its final point");
+        System.out.println("1 - Euclidean distance");
+        System.out.println("2 - manhattan distance");
 
         int choice = sc.nextInt();
 
