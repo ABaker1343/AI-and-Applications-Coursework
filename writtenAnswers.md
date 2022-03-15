@@ -50,8 +50,10 @@ i will be representing the problem as a 2 dimensional array where each inner arr
 
 (see SudokuSolver folder) the main method is in SolverApp.java
 
-### performance overview:
-<h2> 10,000 population size
+<br>
+
+<h1>Performance comparison 
+<h2> 1,000 population size
 <table>
     <tr>
         <th>
@@ -78,7 +80,20 @@ i will be representing the problem as a 2 dimensional array where each inner arr
             Grid1
         </td>
         <td>
-            Grid1
+            206s
+            <img src="image/g1s1000">
+        </td>
+        <td>
+            360s
+        </td>
+        <td>
+            234s
+        </td>
+        <td>
+            206s
+        </td>
+        <td>
+            206s
         </td>
     </tr>
 

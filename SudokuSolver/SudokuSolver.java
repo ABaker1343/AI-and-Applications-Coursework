@@ -25,7 +25,7 @@ public class SudokuSolver implements Runnable {
         /**
          * initializes random values to the sudoku board where each row will have one of each number
          */
-        public void  initRandomValues(){
+        public void  initRandomValues(Board initialBoard){
 
             Random rand = new Random();
 
@@ -34,15 +34,25 @@ public class SudokuSolver implements Runnable {
                 ArrayList<Integer> remaining = new ArrayList<Integer>(Arrays.asList(ints));
                 for (int c = 0; c < values.length; c++){
                     //make sure that we dont repeat any numbers in each row
-                    if (lockedPositions.contains(new int[] {r,c})){
-                        remaining.remove(values[r][c]);
-                        continue;
+                    if (containsCoor(new int[] {r,c})){
+                        for (int i = 0; i < remaining.size(); i++){
+                            if (remaining.get(i).intValue() == initialBoard.values[r][c]){
+                                remaining.remove(i);
+                            }
+                        }
+                        values[r][c] = initialBoard.values[r][c];
                     }
+                }
+                for (int c = 0; c < values.length; c++){
+                    if (!containsCoor(new int[]{r,c})){
+                        int index = rand.nextInt(remaining.size());
+                        values[r][c] = remaining.get(index);
+                        remaining.remove(index);
+                    }
+                }
 
-                    //values[x][y] = rand.nextInt(9) + 1;
-                    int index = rand.nextInt(remaining.size());
-                    values[r][c] = remaining.get(index);
-                    remaining.remove(index);
+                if (!remaining.isEmpty()){
+                    System.out.println("failed to initialize board correctly");
                 }
             }
         }
@@ -56,7 +66,7 @@ public class SudokuSolver implements Runnable {
             for (int r = 0; r < values[0].length; r++){
                 for (int c = 0; c < values.length; c++){
                     //make sure that we dont repeat any numbers in each row
-                    if (lockedPositions.contains(new int[] {r,c})){
+                    if (containsCoor(new int[] {r,c})){
                         continue;
                     }
 
@@ -89,6 +99,19 @@ public class SudokuSolver implements Runnable {
             }
 
             return clone;
+        }
+
+        public boolean containsCoor(int[] arr){
+
+            for (int i = 0; i < lockedPositions.size(); i++){
+                if (lockedPositions.get(i)[0] == arr[0]){
+                    if (lockedPositions.get(i)[1] == arr[1]){
+                        return true;
+                    }
+                }
+            }
+    
+            return false;
         }
 
     }
@@ -140,7 +163,7 @@ public class SudokuSolver implements Runnable {
         
         for (Board b : boardSpace){
             //initialize
-            b.initRandomValues();
+            b.initRandomValues(this.initialBoard);
         }
 
     }
@@ -540,7 +563,7 @@ public class SudokuSolver implements Runnable {
             //find wheere they were replaced
             ArrayList<Integer[]> lockedTaken = new ArrayList<Integer[]>();
             for (int c = 0; c < b.values.length; c++){
-                if (lockedPositions.contains(new int[]{r,c})){
+                if (containsCoor(new int[]{r,c})){
                     if (mutation.values[r][c] == b.values[r][c]){
                         continue;
                     }
@@ -558,12 +581,13 @@ public class SudokuSolver implements Runnable {
             // fill back in the replaced numbers
             for (int c = 0; c < b.values.length; c++){
                 if (inserted.contains(mutation.values[r][c])){
-                    if(lockedPositions.contains(new int[]{r, c})){
+                    if(containsCoor(new int[]{r, c})){
                         continue;
                     }
                     int index = rand.nextInt(removed.size());
                     mutation.values[r][c] = removed.get(index);
                     removed.remove(index);
+                    inserted.remove(index);
                 }
             }
         }
@@ -596,7 +620,7 @@ public class SudokuSolver implements Runnable {
             //find wheere they were replaced
             ArrayList<Integer[]> lockedTaken = new ArrayList<Integer[]>();
             for (int r = 0; r < b.values.length; r++){
-                if (lockedPositions.contains(new int[]{r,c})){
+                if (containsCoor(new int[]{r,c})){
                     if (mutation.values[r][c] == b.values[r][c]){
                         continue;
                     }
@@ -614,12 +638,13 @@ public class SudokuSolver implements Runnable {
             // fill back in the replaced numbers
             for (int r = 0; r < b.values.length; r++){
                 if (inserted.contains(mutation.values[r][c])){
-                    if(lockedPositions.contains(new int[]{r, c})){
+                    if(containsCoor(new int[]{r, c})){
                         continue;
                     }
                     int index = rand.nextInt(removed.size());
                     mutation.values[r][c] = removed.get(index);
                     removed.remove(index);
+                    inserted.remove(index);
                 }
             }
         }
@@ -646,8 +671,8 @@ public class SudokuSolver implements Runnable {
             while (!swapValid){
                 firstIndex = rand.nextInt(9);
                 secondIndex = rand.nextInt(9);
-                if (! (lockedPositions.contains(new int[]{r, firstIndex}) 
-                || lockedPositions.contains(new int[]{r,secondIndex}))){
+                if (! (containsCoor(new int[]{r, firstIndex}) 
+                || containsCoor(new int[]{r,secondIndex}))){
                     swapValid = true;
                 }
 
@@ -680,8 +705,8 @@ public class SudokuSolver implements Runnable {
             while (!swapValid){
                 firstIndex = rand.nextInt(9);
                 secondIndex = rand.nextInt(9);
-                if (! (lockedPositions.contains(new int[]{firstIndex, c}) 
-                || lockedPositions.contains(new int[]{secondIndex, c}))){
+                if (! (containsCoor(new int[]{firstIndex, c}) 
+                || containsCoor(new int[]{secondIndex, c}))){
                     swapValid = true;
                 }
 
@@ -718,8 +743,8 @@ public class SudokuSolver implements Runnable {
                 secondIndexR = rand.nextInt(9);
                 firstIndexC = rand.nextInt(9);
                 secondIndexC = rand.nextInt(9);
-                if (! (lockedPositions.contains(new int[]{firstIndexR, firstIndexC}) 
-                || lockedPositions.contains(new int[]{secondIndexR, secondIndexC}))){
+                if (! (containsCoor(new int[]{firstIndexR, firstIndexC}) 
+                || containsCoor(new int[]{secondIndexR, secondIndexC}))){
                     swapValid = true;
                 }
 
@@ -777,4 +802,18 @@ public class SudokuSolver implements Runnable {
         }
         return false;
     }
+
+    public boolean containsCoor(int[] arr){
+
+        for (int i = 0; i < lockedPositions.size(); i++){
+            if (lockedPositions.get(i)[0] == arr[0]){
+                if (lockedPositions.get(i)[1] == arr[1]){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

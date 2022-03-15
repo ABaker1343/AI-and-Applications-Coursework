@@ -30,11 +30,11 @@ public class SolverApp {
 
             for (int r = 0; r < 9; r++){
                 for (int c = 0; c < 9; c++){
-                    if (charBuffer.get(r+c) == '.'){
+                    if (charBuffer.get((r*9+c)) == '.'){
                         startBoard[r][c] = 0;
                     }
                     else {
-                        startBoard[r][c] = charBuffer.get(r+c) - '0'; // - character 0 to get numerical value
+                        startBoard[r][c] = Integer.parseInt(charBuffer.get((r*9)+c).toString());// - '0'; // - character 0 to get numerical value
                     }
                 }
             }
