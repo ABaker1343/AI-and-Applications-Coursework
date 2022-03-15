@@ -9,6 +9,7 @@ public class SolverApp {
 
         
         int[][] startBoard = new int[9][9];
+        int numPerGeneration;
 
         if (args.length > 0){
             String filepath = args[0];
@@ -37,6 +38,8 @@ public class SolverApp {
                     }
                 }
             }
+
+            numPerGeneration = Integer.parseInt(args[1]);
         }
 
         else{
@@ -51,6 +54,7 @@ public class SolverApp {
                 {0,0,0,4,1,9,0,0,5},
                 {0,0,0,0,8,0,0,7,9}
             };
+            numPerGeneration = 1000;
         }
 
         // SudokuSolver solver = new SudokuSolver(startBoard, 1000);
@@ -58,7 +62,6 @@ public class SolverApp {
         // solver.run();
 
         final int solverCount = 8;
-        final int numPerGeneration = 1000;
         final float evolutionPercentage = 0.01f;
         SudokuSolver[] solvers = new SudokuSolver[solverCount];
         Thread[] solverThreads = new Thread[solverCount];

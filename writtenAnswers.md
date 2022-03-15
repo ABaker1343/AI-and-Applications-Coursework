@@ -49,3 +49,42 @@ i will be representing the problem as a 2 dimensional array where each inner arr
 ## Question 2.1 p2
 
 (see SudokuSolver folder) the main method is in SolverApp.java
+
+### performance overview:
+<h2> 10,000 population size
+<table>
+    <tr>
+        <th>
+            Grid
+        </th>
+        <th>
+            Run 1
+        </th>
+        <th>
+            Run 2
+        </th>
+        <th>
+            Run 3
+        </th>
+        <th>
+            Run 4
+        </th>
+        <th>
+            Run 5
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Grid1
+        </td>
+        <td>
+            Grid1
+        </td>
+    </tr>
+
+</table>
+
+
+## Question 2.2
+
+
