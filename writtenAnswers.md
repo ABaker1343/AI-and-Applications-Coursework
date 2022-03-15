@@ -21,7 +21,7 @@ the PuzzleGraph class has two subclasses (one for each heuristic function) which
 this algorithm can solve any configuration of configurations, provided there is a solution.
 this is because at a worst case it will check through all the possible paths to get to an answer but this could take a very long time with the implementation i have
 
-note: to solve the problem given in the spec my machine took just under 300 seconds using manhattan distance and just over 900 seconds for the euclidean distance
+note: to solve the problem given in the spec my machine took just under 150 seconds using manhattan distance and just over 330 seconds for the euclidean distance
 
 # Question 2
 
