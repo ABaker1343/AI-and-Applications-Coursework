@@ -107,11 +107,10 @@ class PuzzleGraph {
             for (int swapIndex : getValidSwaps(n.zeroIndex)) {
                 //get the value of swapping that index with 0
                 Node newNode;
-                if (!nodeSearched((newNode = swapWithZero(n, swapIndex)))){
-                //if (!checkNodeTrace(n, newNode = swapWithZero(n, swapIndex))){
+                if ( ( moveValue = evaluate( newNode = swapWithZero(n, swapIndex) ) + getNodeDepth(n)) < bestMoveValue){
                     //make sure that node hasnt already been searched
                     //evaluation + trace length because we want to favour nodes with less depth
-                    if ( ( moveValue = evaluate( newNode ) + getNodeDepth(n)) < bestMoveValue){
+                    if (!nodeSearched(newNode)){
                         bestMoveIndex = swapIndex;
                         bestNodeMove = outer;
                         bestMoveValue = moveValue;
