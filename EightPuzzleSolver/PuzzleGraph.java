@@ -207,41 +207,41 @@ class PuzzleGraph {
 
         // all the valid moves for a given gap
 
-        int[] validSwaps = null;
+            int[] validSwaps = null;
 
-        switch (zeroIndex){
-            case 0:
-                validSwaps = new int[]{1,3};
-                break;
-            case 1:
-                validSwaps = new int[]{0,2,4};
-                break;
-            case 2:
-                validSwaps = new int[]{1,5};
-                break;
-            case 3:
-                validSwaps = new int[]{0,4,6};
-                break;
-            case 4:
-                validSwaps = new int[]{1,3,5,7};
-                break;
-            case 5:
-                validSwaps = new int[]{2,4,8};
-                break;
-            case 6:
-                validSwaps = new int[]{3,7};
-                break;
-            case 7:
-                validSwaps = new int[]{4,6,8};
-                break;
-            case 8:
-                validSwaps = new int[]{5,7};
-                break;
-            default:
-                throw new Exception("no valid swaps for this index");
-        }
+            switch (zeroIndex){
+                case 0:
+                    validSwaps = new int[]{1,3};
+                    break;
+                case 1:
+                    validSwaps = new int[]{0,2,4};
+                    break;
+                case 2:
+                    validSwaps = new int[]{1,5};
+                    break;
+                case 3:
+                    validSwaps = new int[]{0,4,6};
+                    break;
+                case 4:
+                    validSwaps = new int[]{1,3,5,7};
+                    break;
+                case 5:
+                    validSwaps = new int[]{2,4,8};
+                    break;
+                case 6:
+                    validSwaps = new int[]{3,7};
+                    break;
+                case 7:
+                    validSwaps = new int[]{4,6,8};
+                    break;
+                case 8:
+                    validSwaps = new int[]{5,7};
+                    break;
+                default:
+                    throw new Exception("no valid swaps for this index");
+            }
 
-        return validSwaps;
+            return validSwaps;
     }
 
     /**
