@@ -50,6 +50,8 @@ i will be representing the problem as a 2 dimensional array where each inner arr
 
 (see SudokuSolver folder) the main method is in SolverApp.java
 
+you can run it using `java SolverApp [grid file path] [population size] [thread count (optional)]`
+
 <br>
 
 <h1>Performance comparison
