@@ -61,7 +61,14 @@ public class SolverApp {
 
         // solver.run();
 
-        final int solverCount = 8;
+        final int solverCount;
+
+        if (args.length > 2){
+            solverCount = Integer.parseInt(args[2]);
+        } else {
+            solverCount = 1;
+        }
+        
         final float evolutionPercentage = 0.01f;
         SudokuSolver[] solvers = new SudokuSolver[solverCount];
         Thread[] solverThreads = new Thread[solverCount];

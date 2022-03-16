@@ -52,7 +52,92 @@ i will be representing the problem as a 2 dimensional array where each inner arr
 
 <br>
 
-<h1>Performance comparison 
+<h1>Performance comparison
+
+<h2> 100 population size
+<table>
+    <tr>
+        <th>
+            Grid
+        </th>
+        <th>
+            Run 1
+        </th>
+        <th>
+            Run 2
+        </th>
+        <th>
+            Run 3
+        </th>
+        <th>
+            Run 4
+        </th>
+        <th>
+            Run 5
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Grid1
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+        <tr>
+        <td>
+            Grid2
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Grid3
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+           
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+</table>
+
 <h2> 1,000 population size
 <table>
     <tr>
@@ -80,23 +165,62 @@ i will be representing the problem as a 2 dimensional array where each inner arr
             Grid1
         </td>
         <td>
-            206s
+            no solution after 20 minutes
             <img src="image/g1s1000">
         </td>
         <td>
-            360s
+            no solution after 20 minutes
         </td>
         <td>
-            234s
+            no solution after 20 minutes
         </td>
         <td>
-            206s
+            no solution after 20 minutes
         </td>
         <td>
-            206s
+            926s
         </td>
     </tr>
-
+        <tr>
+        <td>
+            Grid2
+        </td>
+        <td>
+            520s
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Grid3
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+           no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+    </tr>
 </table>
 
 
