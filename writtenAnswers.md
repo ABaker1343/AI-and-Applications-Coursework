@@ -92,7 +92,7 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             no solution after 20 minutes
         </td>
         <td>
-            
+            so solution after 20 minutes
         </td>
         <td>
             
