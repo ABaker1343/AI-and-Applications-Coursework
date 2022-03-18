@@ -92,10 +92,10 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             no solution after 20 minutes
         </td>
         <td>
-            so solution after 20 minutes
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
         <tr>
@@ -103,19 +103,19 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             Grid2
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
     <tr>
@@ -123,19 +123,19 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             Grid3
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-           
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
 </table>
@@ -221,6 +221,90 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+        </td>
+    </tr>
+</table>
+
+<h2> 10,000 population size
+<table>
+    <tr>
+        <th>
+            Grid
+        </th>
+        <th>
+            Run 1
+        </th>
+        <th>
+            Run 2
+        </th>
+        <th>
+            Run 3
+        </th>
+        <th>
+            Run 4
+        </th>
+        <th>
+            Run 5
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Grid1
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes 
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            no solution after 20 minutes
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+        <tr>
+        <td>
+            Grid2
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Grid3
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            
         </td>
     </tr>
 </table>
