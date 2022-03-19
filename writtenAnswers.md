@@ -264,7 +264,7 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
         <tr>
@@ -272,19 +272,19 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             Grid2
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
     <tr>
@@ -292,19 +292,19 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
             Grid3
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
         <td>
-            
+            no solution after 20 minutes
         </td>
     </tr>
 </table>
