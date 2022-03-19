@@ -69,7 +69,7 @@ public class SolverApp {
             solverCount = 1;
         }
         
-        final float evolutionPercentage = 0.01f;
+        final float evolutionPercentage = 0.02f;
         SudokuSolver[] solvers = new SudokuSolver[solverCount];
         Thread[] solverThreads = new Thread[solverCount];
 

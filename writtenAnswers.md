@@ -56,6 +56,105 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
 
 <h1>Performance comparison
 
+<h2> 10 population size
+<table>
+    <tr>
+        <th>
+            Grid
+        </th>
+        <th>
+            Run 1
+        </th>
+        <th>
+            Run 2
+        </th>
+        <th>
+            Run 3
+        </th>
+        <th>
+            Run 4
+        </th>
+        <th>
+            Run 5
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Grid1
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s10.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s20.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s30.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s40.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s50.png">
+        </td>
+    </tr>
+        <tr>
+        <td>
+            Grid2
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s10.png">
+        </td>
+        <td>
+            no solutino after 20 minutes
+            <img src="SudokuScreenshots/g2s20.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s30.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s40.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s50.png">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Grid3
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s10.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s20.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s30.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s40.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s50.png">
+        </td>
+    </tr>
+</table>
+
 <h2> 100 population size
 <table>
     <tr>
@@ -84,18 +183,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s100.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s200.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s300.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s400.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s500.png">
         </td>
     </tr>
         <tr>
@@ -104,18 +208,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s100.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s200.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s300.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s400.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s500.png">
         </td>
     </tr>
     <tr>
@@ -124,18 +233,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s100.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s200.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s300.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s400.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s500.png">
         </td>
     </tr>
 </table>
@@ -168,19 +282,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
-            <img src="image/g1s1000">
+            <img src="SudokuScreenshots/g1s1000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s2000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s3000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s4000.png">
         </td>
         <td>
             926s
+            <img src="SudokuScreenshots/g1s5000.png">
         </td>
     </tr>
         <tr>
@@ -189,18 +307,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             520s
+            <img src="SudokuScreenshots/g2s1000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s2000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s3000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s4000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s5000.png">
         </td>
     </tr>
     <tr>
@@ -209,18 +332,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s1000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s2000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s3000.png">
         </td>
         <td>
            no solution after 20 minutes
+           <img src="SudokuScreenshots/g3s4000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s5000.png">
         </td>
     </tr>
 </table>
@@ -253,18 +381,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
-        </td>
-        <td>
-            no solution after 20 minutes 
-        </td>
-        <td>
-            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s10000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s20000.png"> 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s30000.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s40000.png">
+        </td>
+        <td>
+            no solution after 20 minutes
+            <img src="SudokuScreenshots/g1s50000.png">
         </td>
     </tr>
         <tr>
@@ -273,18 +406,23 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s10000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s20000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s30000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s40000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g2s50000.png">
         </td>
     </tr>
     <tr>
@@ -293,23 +431,32 @@ you can run it using `java SolverApp [grid file path] [population size] [thread 
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s10000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s20000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s30000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s40000.png">
         </td>
         <td>
             no solution after 20 minutes
+            <img src="SudokuScreenshots/g3s50000.png">
         </td>
     </tr>
 </table>
 
 
 ## Question 2.2
+the best population size was 1,000, i think this is because it allowed for the most generations and mutaions while still being quick to run, this means that there was a lot of variation in each generation and the algorithm could go through a large amount of generations
 
+the grids in order of easiest to hardest to solve were 2,1,3. The hardest grids to solve for the algorithm were the ones that had the most empty spaces, I think that this is because there were more variations in the grids that could be generated because each pre-determined spot on the board is a spot that you already know the solution for
+
+i think it would be a good experiment to run the algorithm changing the amount of selected parents. at the moment my algorithm was configured to select the top 2% of boards for mutation, it would be interesting to see how the results change if this was for example 10%
 
